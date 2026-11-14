@@ -1,0 +1,35 @@
+# Climate finding checker
+
+A small public Streamlit app that tests whether a climate trend is robust to reasonable analytical choices.
+
+## Quick start
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+## Scope
+
+- Streamlit + Plotly
+- NASA Giovanni first, NASA POWER fallback
+- Deterministic synthetic demo series when NASA data is unavailable
+- OLS trend on monthly anomalies with a rough AR(1) effective sample size adjustment
+- Fixed challenge panel for date, region, method and coverage sensitivities
+
+## Files
+
+- `contracts.py`: canonical data model
+- `catalogue.py`: supported variables and definitions
+- `data_access.py`: synthetic cache and retrieval layer
+- `processing.py`: monthly indexing, anomalies, coverage and trend utilities
+- `analysis.py`: validation and trend calculation
+- `challenge.py`: fixed challenge variants
+- `app.py`: Streamlit interface
+- `explanations.py`: human-readable result text
+
+## Notes
+
+This is intentionally a sensitivity app rather than a truth machine: it shows how a climate finding changes when a reasonable analyst alters the date window, nearby cell, method or coverage rule.
